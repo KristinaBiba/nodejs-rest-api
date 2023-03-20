@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 
 const {
   getAllController,
@@ -6,15 +7,14 @@ const {
   changeContactController,
   deleteController,
   addContactController,
-} = require("../../controllers/controllers");
+  changeFildFavorite,
+} = require("../../controllers");
 
 const {
   checkId,
   checkContactData,
-  checkUpdateContactData,
-} = require("../../middlewares/contactsMiddleware");
-
-const router = express.Router();
+  checkContactFildFavorite,
+} = require("../../middlewares");
 
 router
   .route("/")
@@ -25,6 +25,10 @@ router
   .route("/:contactId")
   .get(checkId, getByIdController)
   .delete(checkId, deleteController)
-  .put(checkUpdateContactData, changeContactController);
+  .put(changeContactController);
+
+router
+  .route("/:contactId/favorite")
+  .patch(checkId, checkContactFildFavorite, changeFildFavorite);
 
 module.exports = router;
