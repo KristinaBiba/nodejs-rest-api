@@ -8,13 +8,13 @@ const {
   deleteController,
   addContactController,
   changeFildFavorite,
-} = require("../../controllers/controllers");
+} = require("../../controllers");
 
 const {
   checkId,
   checkContactData,
   checkContactFildFavorite,
-} = require("../../middlewares/contactsMiddleware");
+} = require("../../middlewares");
 
 router
   .route("/")
