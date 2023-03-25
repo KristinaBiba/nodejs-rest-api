@@ -8,6 +8,7 @@ const {
 } = require("./contacts");
 const {
   addUser,
+  loginUser,
 } = require("./users");
 
 module.exports = {
@@ -17,5 +18,6 @@ module.exports = {
   removeContact,
   addContact,
   updateStatusContact,
-  addUser
+  addUser,
+  loginUser,
 };

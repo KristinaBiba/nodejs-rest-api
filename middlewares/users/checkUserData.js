@@ -11,6 +11,7 @@ const checkUserData = async (req, res, next) => {
     const { error } = userRegisterValidator(req.body);
 
     if (error) return next(new AppError(400, error.details[0].message));
+    
 
     next();
   } catch (error) {

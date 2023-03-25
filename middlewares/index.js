@@ -7,6 +7,7 @@ const {
 const {
   checkUserData,
   checkUniqueEmail,
+  checkUserLoginData,
 } = require("./users");
 
 module.exports = {
@@ -16,4 +17,5 @@ module.exports = {
   checkUpdateContactData,
   checkUserData,
   checkUniqueEmail,
+  checkUserLoginData,
 };
