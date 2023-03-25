@@ -1,10 +1,11 @@
-const Contact = require("../../service");
+const { Contact } = require("../../service");
 
-const AppError = require("../../utils");
+const {AppError} = require("../../utils");
 
 const getContactById = async (contactId) => {
   try {
-    return await Contact.findById({ _id: contactId });
+    const contact = await Contact.findById({ _id: contactId });
+    return contact;
   } catch (error) {
     return new AppError(500, error);
   }

@@ -6,6 +6,9 @@ const {
   addContact,
   updateStatusContact,
 } = require("./contacts");
+const {
+  addUser,
+} = require("./users");
 
 module.exports = {
   listContacts,
@@ -14,4 +17,5 @@ module.exports = {
   removeContact,
   addContact,
   updateStatusContact,
+  addUser
 };
