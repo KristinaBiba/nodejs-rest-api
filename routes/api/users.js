@@ -1,14 +1,25 @@
 const express = require("express");
 const router = express.Router();
 
-const { addUserController, loginUserController, logoutUserController } = require("../../controllers");
+const {
+  addUserController,
+  loginUserController,
+  logoutUserController,
+  currentUserController,
+  changeUserSubController,
+} = require("../../controllers");
 
 const {
   checkUserData,
   checkUniqueEmail,
   checkUserLoginData,
   checkToken,
+  checkUserSub,
 } = require("../../middlewares");
+
+router
+  .route("/")
+  .patch(checkUserSub, changeUserSubController);
 
 router
   .route("/register")
@@ -18,8 +29,8 @@ router
   .route("/login")
   .post(checkUserData, checkUserLoginData, loginUserController);
 
-router
-  .route("/logout")
-  .post(checkToken, logoutUserController);
+router.route("/logout").post(checkToken, logoutUserController);
+
+router.route("/current").post(checkToken, currentUserController);
 
 module.exports = router;

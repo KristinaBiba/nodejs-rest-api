@@ -10,6 +10,8 @@ const {
   addUser,
   loginUser,
   logoutUser,
+  currentUserdata,
+  changeUserSub,
 } = require("./users");
 
 module.exports = {
@@ -22,4 +24,6 @@ module.exports = {
   addUser,
   loginUser,
   logoutUser,
+  currentUserdata,
+  changeUserSub,
 };

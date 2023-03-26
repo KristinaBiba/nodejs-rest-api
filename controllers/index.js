@@ -10,6 +10,8 @@ const {
   addUserController,
   loginUserController,
   logoutUserController,
+  currentUserController,
+  changeUserSubController,
 } = require("./users");
 
 module.exports = {
@@ -22,4 +24,6 @@ module.exports = {
   addUserController,
   loginUserController,
   logoutUserController,
+  currentUserController,
+  changeUserSubController,
 };

@@ -9,6 +9,7 @@ const {
   checkUniqueEmail,
   checkUserLoginData,
   checkToken,
+  checkUserSub,
 } = require("./users");
 
 module.exports = {
@@ -20,4 +21,5 @@ module.exports = {
   checkUniqueEmail,
   checkUserLoginData,
   checkToken,
+  checkUserSub,
 };

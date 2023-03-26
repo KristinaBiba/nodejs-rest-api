@@ -1,4 +1,5 @@
-const {Contact, User} = require("./shemas");
-const {createJWT} = require("./token");
+const { Contact, User } = require("./shemas");
+const { createJWT } = require("./token");
+const { userSubscriptinRole } = require("./constants");
 
-module.exports = {Contact, User, createJWT};
+module.exports = { Contact, User, createJWT, userSubscriptinRole };
