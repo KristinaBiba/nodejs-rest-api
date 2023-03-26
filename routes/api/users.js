@@ -1,11 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const {
-  addUserController, loginUserController,
-} = require("../../controllers");
+const { addUserController, loginUserController, logoutUserController } = require("../../controllers");
 
-const {checkUserData, checkUniqueEmail, checkUserLoginData} = require("../../middlewares");
+const {
+  checkUserData,
+  checkUniqueEmail,
+  checkUserLoginData,
+  checkToken,
+} = require("../../middlewares");
 
 router
   .route("/register")
@@ -14,5 +17,9 @@ router
 router
   .route("/login")
   .post(checkUserData, checkUserLoginData, loginUserController);
+
+router
+  .route("/logout")
+  .post(checkToken, logoutUserController);
 
 module.exports = router;

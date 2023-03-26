@@ -6,7 +6,11 @@ const {
   addContactController,
   changeFildFavorite,
 } = require("./contacts");
-const {addUserController, loginUserController} = require("./users");
+const {
+  addUserController,
+  loginUserController,
+  logoutUserController,
+} = require("./users");
 
 module.exports = {
   addContactController,
@@ -15,6 +19,7 @@ module.exports = {
   deleteController,
   changeContactController,
   changeFildFavorite,
-  addUserController, 
-  loginUserController
+  addUserController,
+  loginUserController,
+  logoutUserController,
 };

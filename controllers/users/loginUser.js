@@ -2,8 +2,13 @@ const { loginUser } = require("../../models");
 
 const loginUserController = async (req, res) => {
   try {
-    const user = await loginUser(req.user);
-    res.status(200).json({user});
+    const {user, token} = await loginUser(req.user);
+
+    console.log("token", token);
+    console.log("user", user);
+
+
+    res.status(200).json({token, user});
   } catch (error) {}
 };
 

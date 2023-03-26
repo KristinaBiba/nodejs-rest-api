@@ -15,7 +15,10 @@ const {
   checkContactData,
   checkContactFildFavorite,
   checkUpdateContactData,
+  checkToken,
 } = require("../../middlewares");
+
+router.use(checkToken);
 
 router
   .route("/")
