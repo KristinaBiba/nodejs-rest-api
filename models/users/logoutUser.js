@@ -3,8 +3,8 @@ const { AppError } = require("../../utils");
 
 const logoutUser = async (id) => {
   try {
+    
     await User.findByIdAndUpdate(id, {token: null})
-    console.log(id.token);
 
     return;
   } catch (error) {

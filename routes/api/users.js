@@ -15,11 +15,12 @@ const {
   checkUserLoginData,
   checkToken,
   checkUserSub,
+  checkUserId,
 } = require("../../middlewares");
 
 router
   .route("/")
-  .patch(checkUserSub, changeUserSubController);
+  .patch(checkUserId, checkUserSub, changeUserSubController);
 
 router
   .route("/register")

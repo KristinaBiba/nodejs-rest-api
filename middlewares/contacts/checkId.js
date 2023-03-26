@@ -6,7 +6,6 @@ const checkId = async (req, res, next) => {
     const { contactId } = req.params;
 
     const contactsList = await Contact.find();
-
     
     const contact = contactsList.find((contact) => contact.id === contactId);
     

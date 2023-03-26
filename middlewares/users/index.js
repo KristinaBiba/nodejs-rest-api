@@ -3,6 +3,7 @@ const checkUniqueEmail = require("./checkUniqueEmail");
 const checkUserLoginData = require("./checkUserLoginData");
 const checkToken = require("./checkToken");
 const checkUserSub = require("./checkUserSub");
+const checkUserId = require("./checkUserId");
 
 module.exports = {
     checkUserData,
@@ -10,4 +11,5 @@ module.exports = {
     checkUserLoginData,
     checkToken,
     checkUserSub,
+    checkUserId,
 };

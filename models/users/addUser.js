@@ -9,11 +9,10 @@ const addUser = async ({ email, password }) => {
       password,
     });
 
-    newUser.password = undefined;
-    newUser.updated_at = undefined;
-    newUser.__v = undefined;
-
-    return newUser;
+    return {
+      email: newUser.email,
+      subscription: newUser.subscription,
+    };
   } catch (error) {
     return new AppError(500, error);
   }

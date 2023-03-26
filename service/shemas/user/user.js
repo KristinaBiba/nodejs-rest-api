@@ -1,6 +1,8 @@
 const { Schema, model } = require("mongoose");
 
 const bcrypt = require('bcrypt');
+const userSubscriptinRole = require("../../constants");
+
 
 const saltRounds = 10;
 
@@ -17,7 +19,7 @@ const userSchema = new Schema(
     },
     subscription: {
       type: String,
-      enum: ["starter", "pro", "business"],
+      enum: Object.values(userSubscriptinRole),
       default: "starter",
     },
     token: String,

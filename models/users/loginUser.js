@@ -7,14 +7,20 @@ const loginUser = async (user) => {
 
     const token = await createJWT(currentUser._id);
 
-    await User.findByIdAndUpdate(currentUser._id, {token})
+    await User.findByIdAndUpdate(currentUser._id, { token });
 
     currentUser.password = undefined;
     currentUser.updated_at = undefined;
     currentUser.__v = undefined;
     currentUser.token = undefined;
-    
-    return {user: currentUser, token};
+
+    return {
+      user: {
+        email: currentUser.email,
+        subscription: currentUser.subscription,
+      },
+      token,
+    };
   } catch (error) {
     return new AppError(500, error);
   }

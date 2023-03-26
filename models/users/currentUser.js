@@ -9,7 +9,10 @@ const currentUserdata = async (user) => {
     currentUser.__v = undefined;
     currentUser.token = undefined;
     
-    return currentUser;
+    return {
+      email: currentUser.email,
+      subscription: currentUser.subscription,
+    };
   } catch (error) {
     return new AppError(500, error);
   }
