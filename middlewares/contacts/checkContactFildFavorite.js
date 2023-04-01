@@ -1,4 +1,4 @@
-const AppError = require("../../utils");
+const {AppError} = require("../../utils");
 
 const checkContactFildFavorite = async (req, res, next) => {
   try {

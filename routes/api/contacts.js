@@ -14,7 +14,11 @@ const {
   checkId,
   checkContactData,
   checkContactFildFavorite,
+  checkUpdateContactData,
+  checkToken,
 } = require("../../middlewares");
+
+router.use(checkToken);
 
 router
   .route("/")
@@ -25,7 +29,7 @@ router
   .route("/:contactId")
   .get(checkId, getByIdController)
   .delete(checkId, deleteController)
-  .put(changeContactController);
+  .put(checkId, checkUpdateContactData, changeContactController);
 
 router
   .route("/:contactId/favorite")

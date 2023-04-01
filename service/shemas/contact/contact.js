@@ -15,7 +15,15 @@ const blogSchema = new Schema({
     type: Boolean,
     default: false,
   },
-});
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
+  },
+},
+{timestamps: {
+  createdAt: 'created_at',
+  updatedAt: 'updated_at' 
+}});
 
 const Contact = model("contact", blogSchema);
 

@@ -1,6 +1,6 @@
-const Contact = require("../../service");
+const {Contact} = require("../../service");
 
-const AppError = require("../../utils");
+const {AppError} = require("../../utils");
 
 const removeContact = async (contactId) => {
   try {
