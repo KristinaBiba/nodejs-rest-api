@@ -11,6 +11,7 @@ const {
   checkToken,
   checkUserSub,
   checkUserId,
+  uploadUserAvatar,
 } = require("./users");
 
 module.exports = {
@@ -24,4 +25,5 @@ module.exports = {
   checkToken,
   checkUserSub,
   checkUserId,
+  uploadUserAvatar,
 };

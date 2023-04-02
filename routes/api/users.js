@@ -7,6 +7,7 @@ const {
   logoutUserController,
   currentUserController,
   changeUserSubController,
+  changeUserAvatarController,
 } = require("../../controllers");
 
 const {
@@ -16,6 +17,7 @@ const {
   checkToken,
   checkUserSub,
   checkUserId,
+  uploadUserAvatar,
 } = require("../../middlewares");
 
 router
@@ -33,5 +35,7 @@ router
 router.route("/logout").post(checkToken, logoutUserController);
 
 router.route("/current").post(checkToken, currentUserController);
+
+router.route("/avatars").patch(checkToken, uploadUserAvatar, changeUserAvatarController);
 
 module.exports = router;

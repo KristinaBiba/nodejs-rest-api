@@ -23,6 +23,7 @@ const userSchema = new Schema(
       default: "starter",
     },
     token: String,
+    avatarURL: String,
   },
   {
     timestamps: {
@@ -33,7 +34,6 @@ const userSchema = new Schema(
 );
 
 userSchema.pre('save', async function(next) {
-  console.log("I am hear");
   if (!this.isModified('password')) return next();
   
   const salt = await bcrypt.genSalt(saltRounds);
