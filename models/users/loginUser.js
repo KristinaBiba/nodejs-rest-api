@@ -9,11 +9,6 @@ const loginUser = async (user) => {
 
     await User.findByIdAndUpdate(currentUser._id, { token });
 
-    currentUser.password = undefined;
-    currentUser.updated_at = undefined;
-    currentUser.__v = undefined;
-    currentUser.token = undefined;
-
     return {
       user: {
         email: currentUser.email,

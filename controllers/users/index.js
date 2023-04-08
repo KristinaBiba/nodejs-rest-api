@@ -3,6 +3,7 @@ const loginUserController = require("./loginUser");
 const logoutUserController = require("./logoutUser");
 const currentUserController = require("./currentUser");
 const changeUserSubController = require("./changeUserSub");
+const changeUserAvatarController = require("./changeUserAvatar");
 
 
 module.exports = {
@@ -11,4 +12,5 @@ module.exports = {
     logoutUserController,
     currentUserController,
     changeUserSubController,
+    changeUserAvatarController,
 };
