@@ -5,7 +5,7 @@ const listUsersEmail = async () => {
     try {
       return await User.find().select("email");
     } catch (error) {
-      return new AppError(500, error);
+      return new AppError(500, "error from listUsersEmail");
     }
   };
 

@@ -12,6 +12,7 @@ const {
   checkUserSub,
   checkUserId,
   uploadUserAvatar,
+  checkUserVerify,
 } = require("./users");
 
 module.exports = {
@@ -26,4 +27,5 @@ module.exports = {
   checkUserSub,
   checkUserId,
   uploadUserAvatar,
+  checkUserVerify,
 };

@@ -1,8 +1,7 @@
 const { Schema, model } = require("mongoose");
 
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const userSubscriptinRole = require("../../constants");
-
 
 const saltRounds = 10;
 
@@ -24,7 +23,16 @@ const userSchema = new Schema(
     },
     token: String,
     avatarURL: String,
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      required: [true, "Verify token is required"],
+    },
   },
+
   {
     timestamps: {
       createdAt: "created_at",
@@ -33,17 +41,18 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+
   const salt = await bcrypt.genSalt(saltRounds);
   this.password = await bcrypt.hash(this.password, salt);
-  
+
   next();
 });
 
-userSchema.methods.checkPassword = (candidate, hash) => bcrypt.compare(candidate, hash);
+userSchema.methods.checkPassword = (candidate, hash) =>
+  bcrypt.compare(candidate, hash);
 
 const User = model("user", userSchema);
 
-module.exports = {User, userSchema};
+module.exports = { User, userSchema };

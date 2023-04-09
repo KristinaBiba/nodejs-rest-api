@@ -13,6 +13,8 @@ const {
   currentUserController,
   changeUserSubController,
   changeUserAvatarController,
+  checkVerificationTokenController,
+  sendVerificationEmailController,
 } = require("./users");
 
 module.exports = {
@@ -28,4 +30,6 @@ module.exports = {
   currentUserController,
   changeUserSubController,
   changeUserAvatarController,
+  checkVerificationTokenController,
+  sendVerificationEmailController,
 };

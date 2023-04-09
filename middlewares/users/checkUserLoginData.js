@@ -18,6 +18,10 @@ const checkUserLoginData = async (req, res, next) => {
 
     if (!isPassvordValid)
       return next(new AppError(401, "Email or password is wrong"));
+    
+    if(!currentUser.verify) {
+      return next(new AppError(401, "Please verify your email!"));
+    }
 
     req.user = currentUser;
 

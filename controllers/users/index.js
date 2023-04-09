@@ -4,6 +4,8 @@ const logoutUserController = require("./logoutUser");
 const currentUserController = require("./currentUser");
 const changeUserSubController = require("./changeUserSub");
 const changeUserAvatarController = require("./changeUserAvatar");
+const checkVerificationTokenController = require("./checkVerificationToken");
+const sendVerificationEmailController = require("./sendVerificationEmailController");
 
 
 module.exports = {
@@ -13,4 +15,6 @@ module.exports = {
     currentUserController,
     changeUserSubController,
     changeUserAvatarController,
+    checkVerificationTokenController,
+    sendVerificationEmailController,
 };

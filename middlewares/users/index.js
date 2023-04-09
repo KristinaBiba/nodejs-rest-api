@@ -5,6 +5,7 @@ const checkToken = require("./checkToken");
 const checkUserSub = require("./checkUserSub");
 const checkUserId = require("./checkUserId");
 const uploadUserAvatar = require("./uploadUserAvatar");
+const checkUserVerify = require("./checkUserVerify");
 
 module.exports = {
     checkUserData,
@@ -14,4 +15,5 @@ module.exports = {
     checkUserSub,
     checkUserId,
     uploadUserAvatar,
+    checkUserVerify,
 };

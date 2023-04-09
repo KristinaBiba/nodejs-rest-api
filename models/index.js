@@ -12,6 +12,7 @@ const {
   logoutUser,
   currentUserdata,
   changeUserSub,
+  checkVerificationToken,
   
 } = require("./users");
 
@@ -27,5 +28,5 @@ module.exports = {
   logoutUser,
   currentUserdata,
   changeUserSub,
-  
+  checkVerificationToken,
 };
