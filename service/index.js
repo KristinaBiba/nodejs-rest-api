@@ -1,6 +1,6 @@
 const { Contact, User } = require("./shemas");
 const { createJWT } = require("./token");
-const { sendEmail } = require("./email");
+const sendEmail = require("./email");
 const userSubscriptinRole = require("./constants");
 
 

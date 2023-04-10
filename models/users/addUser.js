@@ -1,19 +1,17 @@
-const { User, sendEmail } = require("../../service");
-const { AppError } = require("../../utils");
+const { User } = require("../../service");
+const { sendEmail } = require("../../service");
 
-const { v4: uuidv4 } = require('uuid')
+const { v4: uuidv4 } = require("uuid");
 
-const gravatar = require('gravatar');
+const gravatar = require("gravatar");
 
 const addUser = async ({ email, password }, res) => {
   try {
-    const url = gravatar.url(email,  {s: '200', r: 'g', d: 'identicon'});
+    const url = gravatar.url(email, { s: "200", r: "g", d: "identicon" });
 
     const verificationToken = uuidv4();
 
-
-    const verificationLink = `http:localhost:3000/users/verify/${verificationToken}`
-
+    const verificationLink = `http:localhost:3000/api/users/verify/${verificationToken}`;
 
     const newUser = await User.create({
       email,
@@ -22,7 +20,7 @@ const addUser = async ({ email, password }, res) => {
       verificationToken,
     });
 
-    // await sendEmail(email, verificationLink);
+    await sendEmail(email, verificationLink);
 
     return {
       email: newUser.email,
@@ -30,10 +28,9 @@ const addUser = async ({ email, password }, res) => {
     };
   } catch (error) {
     return res.status(500).json({
-      status: 'error',
+      status: "error",
       code: 500,
-      message: 'Error',
-      
+      message: "Error",
     });
   }
 };
