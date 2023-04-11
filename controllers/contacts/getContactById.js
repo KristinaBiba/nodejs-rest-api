@@ -1,13 +1,8 @@
-const { getContactById } = require("../../models");
+const { tryCatchWrapper } = require("../../utils");
 
 const getByIdController = async (req, res) => {
-  try {
-    const contact = await getContactById(req.params.contactId);
-
-    res.status(200).json(contact);
-  } catch (error) {
-    return error;
-  }
+    
+    res.status(200).json(req.contact);
 };
 
-module.exports = getByIdController;
+module.exports = {getByIdController: tryCatchWrapper(getByIdController)};

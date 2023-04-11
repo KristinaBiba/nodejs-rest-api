@@ -1,3 +1,3 @@
-const schema = require("./contactsValidator");
+const {contactAddSchema, contactUpdateSchema, contactChangeFavoriteSchema} = require("./contactsValidator");
 
-module.exports = { schema };
+module.exports = { contactAddSchema, contactUpdateSchema, contactChangeFavoriteSchema };

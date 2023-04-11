@@ -1,12 +1,17 @@
-const { updateContact } = require("../../models");
+const { Contact } = require("../../service");
+const { tryCatchWrapper } = require("../../utils");
 
 const changeContactController = async (req, res) => {
-  try {
-    const updatedContact = await updateContact(req.params.contactId, req.body);
+    const { name, email, phone, favorite } = req.body;
+
+    const updatedContact = await Contact.findByIdAndUpdate(
+      { _id: req.contact._id },
+      { name, email, phone, favorite },
+      { new: true }
+    );
+
     res.status(200).json(updatedContact);
-  } catch (error) {
-    return error;
-  }
+
 };
 
-module.exports = changeContactController;
+module.exports = {changeContactController: tryCatchWrapper(changeContactController)};

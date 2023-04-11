@@ -1,11 +1,11 @@
-const { addContact } = require("../../models");
-const { AppError } = require("../../utils");
+const { Contact } = require("../../service");
+const { tryCatchWrapper } = require("../../utils");
 
 const addContactController = async (req, res) => {
-  try {
-    const newContact = await addContact(req.body);
-    res.status(201).json(newContact);
-  } catch (error) {return new AppError(500, error.massage);}
+  const newContact = await Contact.create({...req.body, owner: req.user.id});
+  res.status(201).json(newContact);
 };
 
-module.exports = addContactController;
+module.exports = {
+  addContactController: tryCatchWrapper(addContactController),
+};

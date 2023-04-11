@@ -1,13 +1,20 @@
-const { listContacts } = require("../../models");
+const { Contact } = require("../../service");
+const { tryCatchWrapper } = require("../../utils");
 
 const getAllController = async (req, res) => {
-  try {
     const { limit, page, favorite} = req.query;
-    const contacts = await listContacts(limit, page, favorite);
+
+    const filterRow = favorite
+    ? { favorite: favorite, owner: req.user.id }
+    : {owner: req.user.id};
+    
+    const paginationPage = +page || 1;
+    const paginationLimit = +limit || 5;
+    const skip = (paginationPage - 1) * paginationLimit;
+
+    const contacts = await Contact.find(filterRow).select("-__v").skip(skip).limit(paginationLimit);
+  
     res.status(200).json({ contacts });
-  } catch (error) {
-    return error;
-  }
 };
 
-module.exports = getAllController;
+module.exports = {getAllController: tryCatchWrapper(getAllController)};

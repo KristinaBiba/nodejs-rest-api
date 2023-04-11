@@ -1,21 +1,17 @@
-const { AppError, schema } = require("../../utils");
+const { AppError, contactAddSchema, tryCatchWrapper } = require("../../utils");
 
 const checkContactData = async (req, res, next) => {
-  try {
-    const { name, email, phone } = req.body;
+  const { name, email, phone } = req.body;
 
-    if (!name || !email || !phone) {
-      return next(new AppError(400, "missing required name field"));
-    }
-
-    const { error } = schema(req.body);
-
-    if (error) return next(new AppError(400, error.details[0].message));
-
-    next();
-  } catch (error) {
-    next(error);
+  if (!name || !email || !phone) {
+    return next(new AppError(400, "Missing required name field"));
   }
+
+  const { error } = contactAddSchema(req.body);
+
+  if (error) return next(new AppError(400, error.details[0].message));
+
+  next();
 };
 
-module.exports = checkContactData;
+module.exports = { checkContactData: tryCatchWrapper(checkContactData) };

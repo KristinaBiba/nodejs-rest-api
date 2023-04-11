@@ -1,4 +1,4 @@
-const { AppError } = require("../../utils");
+const { AppError, tryCatchWrapper } = require("../../utils");
 const { User } = require("../../service");
 const uuid = require("uuid").v4;
 const path = require("path");
@@ -35,4 +35,4 @@ const changeUserAvatarController = async (req, res, next) => {
   }
 };
 
-module.exports = changeUserAvatarController;
+module.exports = {changeUserAvatarController: tryCatchWrapper(changeUserAvatarController)};
