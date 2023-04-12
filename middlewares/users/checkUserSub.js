@@ -3,6 +3,7 @@ const { userSubscriptinRole } = require("../../service");
 
 const checkUserSub = async (req, res, next) => {
   const { subscription } = req.body;
+  
   const correctSub = Object.values(userSubscriptinRole);
 
   const checkSub = correctSub.find((item) => item === subscription);

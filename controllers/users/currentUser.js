@@ -1,12 +1,7 @@
-const { currentUserdata } = require("../../models");
-const { tryCatchWrapper } = require("../../utils");
-
 const currentUserController = async (req, res) => {
-  const currentUser = await currentUserdata(req.user);
+  const { email, subscription } = req.user;
 
-  res.status(200).json({ user: currentUser });
+  res.status(200).json({ email, subscription });
 };
 
-module.exports = {
-  currentUserController: tryCatchWrapper(currentUserController),
-};
+module.exports = currentUserController;

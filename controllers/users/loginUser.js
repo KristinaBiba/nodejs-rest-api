@@ -1,10 +1,20 @@
-const { loginUser } = require("../../models");
 const { tryCatchWrapper } = require("../../utils");
+const { createJWT, User } = require("../../service");
 
 const loginUserController = async (req, res) => {
-  const { user, token } = await loginUser(req.user);
+  const { email, id, subscription } = req.user;
 
-  res.status(200).json({ token, user });
+  const token = await createJWT(id);
+
+  await User.findByIdAndUpdate(id, { token });
+
+  res.status(200).json({
+    user: {
+      email,
+      subscription,
+    },
+    token,
+  });
 };
 
 module.exports = { loginUserController: tryCatchWrapper(loginUserController) };

@@ -12,6 +12,7 @@ const checkToken = async (req, res, next) => {
 
   try {
     decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+    console.log(decoded);
   } catch (err) {
     return next(new AppError(401, 'Not authorized'));
   }
@@ -20,7 +21,6 @@ const checkToken = async (req, res, next) => {
 
   if (!currentUser) return next(new AppError(401, 'Not authorized'));
   if (currentUser.token === null) return next(new AppError(401, 'Not authorized'));
-
 
   req.user = currentUser;
 

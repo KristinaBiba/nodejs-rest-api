@@ -1,12 +1,10 @@
 const { tryCatchWrapper } = require("../../utils");
-const sendEmail = require("../../service");
+const {sendEmail} = require("../../service");
 
 const sendVerificationEmailController = async (req, res) => {
   const { email, verificationToken } = req.user;
 
-  const verificationLink = `http:localhost:3000/users/verify/${verificationToken}`;
-
-  await sendEmail(email, verificationLink);
+  await sendEmail(email, verificationToken);
 
   res.status(200).json({ message: "Verification email sent" });
 };

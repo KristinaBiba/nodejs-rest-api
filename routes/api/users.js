@@ -45,6 +45,4 @@ router.route("/verify").post(checkUserVerify, sendVerificationEmailController);
 
 router.route("/verify/:verificationToken").get(checkVerificationTokenController);
 
-
-
 module.exports = router;

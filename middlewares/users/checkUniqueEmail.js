@@ -1,25 +1,14 @@
 const { User } = require("../../service");
 const { AppError, tryCatchWrapper } = require("../../utils");
 
-const listUsersEmail = async () => {
-    try {
-      return await User.find().select("email");
-    } catch (error) {
-      return new AppError(500, error.message);
-    }
-  };
-
 const checkUniqueEmail = async (req, res, next) => {
+  const { email } = req.body;
 
-    const { email } = req.body;
+  const checkEmail = await User.findOne({ email });
 
-    const allUsersEmail = await listUsersEmail();
-   
-    const checkEmail = allUsersEmail.find(item => item.email === email);
+  if (checkEmail) return next(new AppError(409, "Email in use"));
 
-    if(checkEmail) return next(new AppError(409, "Email in use"));
-    
-    next();
+  next();
 };
 
-module.exports = {checkUniqueEmail: tryCatchWrapper(checkUniqueEmail)};
+module.exports = { checkUniqueEmail: tryCatchWrapper(checkUniqueEmail) };

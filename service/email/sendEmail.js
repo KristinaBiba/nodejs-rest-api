@@ -36,7 +36,9 @@ const config = {
     pass: process.env.PASSWORD,
   },
 };
-const sendEmail = async (email, verificationLink) => {
+const sendEmail = async (email, verificationToken) => {
+
+  const verificationLink = `${process.env.SERVER_URL}api/users/verify/${verificationToken}`;
 
   const transporter = nodemailer.createTransport(config);
   const emailOptions = {
