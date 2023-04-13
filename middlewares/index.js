@@ -13,6 +13,8 @@ const {
   checkUserId,
   uploadUserAvatar,
   checkUserVerify,
+  checkAccessRights,
+  checkUserUpdateData,
 } = require("./users");
 
 module.exports = {
@@ -28,4 +30,6 @@ module.exports = {
   checkUserId,
   uploadUserAvatar,
   checkUserVerify,
+  checkAccessRights,
+  checkUserUpdateData,
 };

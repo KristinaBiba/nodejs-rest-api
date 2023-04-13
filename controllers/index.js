@@ -15,6 +15,7 @@ const {
   changeUserAvatarController,
   checkVerificationTokenController,
   sendVerificationEmailController,
+  updateUserController,
 } = require("./users");
 
 module.exports = {
@@ -32,4 +33,5 @@ module.exports = {
   changeUserAvatarController,
   checkVerificationTokenController,
   sendVerificationEmailController,
+  updateUserController,
 };

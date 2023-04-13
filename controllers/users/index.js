@@ -6,6 +6,7 @@ const {changeUserSubController} = require("./changeUserSub");
 const {changeUserAvatarController} = require("./changeUserAvatar");
 const {checkVerificationTokenController} = require("./checkVerificationToken");
 const {sendVerificationEmailController} = require("./sendVerificationEmailController");
+const {updateUserController} = require("./updateUser");
 
 
 module.exports = {
@@ -17,4 +18,5 @@ module.exports = {
     changeUserAvatarController,
     checkVerificationTokenController,
     sendVerificationEmailController,
+    updateUserController,
 };

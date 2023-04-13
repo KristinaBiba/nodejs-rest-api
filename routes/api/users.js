@@ -10,6 +10,7 @@ const {
   changeUserAvatarController,
   checkVerificationTokenController,
   sendVerificationEmailController,
+  updateUserController,
 } = require("../../controllers");
 
 const {
@@ -21,11 +22,13 @@ const {
   checkUserId,
   uploadUserAvatar,
   checkUserVerify,
+  checkAccessRights,
+  checkUserUpdateData,
 } = require("../../middlewares");
 
 router
   .route("/")
-  .patch(checkUserId, checkUserSub, changeUserSubController);
+  .patch(checkToken, checkAccessRights, checkUserId, checkUserSub, changeUserSubController);
 
 router
   .route("/register")
@@ -37,7 +40,7 @@ router
 
 router.route("/logout").post(checkToken, logoutUserController);
 
-router.route("/current").post(checkToken, currentUserController);
+router.route("/current").post(checkToken, currentUserController).put(checkToken, checkUserUpdateData, updateUserController);
 
 router.route("/avatars").patch(checkToken, uploadUserAvatar, changeUserAvatarController);
 

@@ -6,6 +6,8 @@ const {checkUserSub} = require("./checkUserSub");
 const {checkUserId} = require("./checkUserId");
 const uploadUserAvatar = require("./uploadUserAvatar");
 const {checkUserVerify} = require("./checkUserVerify");
+const {checkAccessRights} = require("./checkAccessRights");
+const {checkUserUpdateData} = require("./checkUserUpdateData");
 
 module.exports = {
     checkUserData,
@@ -16,4 +18,6 @@ module.exports = {
     checkUserId,
     uploadUserAvatar,
     checkUserVerify,
+    checkAccessRights,
+    checkUserUpdateData,
 };
