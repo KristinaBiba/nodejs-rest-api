@@ -1,12 +1,7 @@
-const { currentUserdata } = require("../../models");
-const { AppError } = require("../../utils");
-
 const currentUserController = async (req, res) => {
-  try {
-    const currentUser = await currentUserdata(req.user);
+  const { email, subscription } = req.user;
 
-    res.status(200).json({ user: currentUser});
-  } catch (error) {return new AppError(500, error.massage);}
+  res.status(200).json({ email, subscription });
 };
 
 module.exports = currentUserController;

@@ -1,12 +1,20 @@
-const { loginUser } = require("../../models");
-const { AppError } = require("../../utils");
+const { tryCatchWrapper } = require("../../utils");
+const { createJWT, User } = require("../../service");
 
 const loginUserController = async (req, res) => {
-  try {
-    const {user, token} = await loginUser(req.user);
+  const { email, id, subscription } = req.user;
 
-    res.status(200).json({token, user});
-  } catch (error) {return new AppError(500, error.massage);}
+  const token = await createJWT(id);
+
+  await User.findByIdAndUpdate(id, { token });
+
+  res.status(200).json({
+    user: {
+      email,
+      subscription,
+    },
+    token,
+  });
 };
 
-module.exports = loginUserController;
+module.exports = { loginUserController: tryCatchWrapper(loginUserController) };

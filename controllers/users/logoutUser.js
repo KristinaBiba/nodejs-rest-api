@@ -1,12 +1,12 @@
-const { logoutUser } = require("../../models");
-const { AppError } = require("../../utils");
+const { User } = require("../../service");
+const { tryCatchWrapper } = require("../../utils");
 
 const logoutUserController = async (req, res) => {
-  try {
-    await logoutUser(req.user.id);
+  await User.findByIdAndUpdate(req.user.id, {token: null});
 
-    res.status(204).send('No Content');
-  } catch (error) {return new AppError(500, error.massage);}
+  res.status(204).send("No Content");
 };
 
-module.exports = logoutUserController;
+module.exports = {
+  logoutUserController: tryCatchWrapper(logoutUserController),
+};

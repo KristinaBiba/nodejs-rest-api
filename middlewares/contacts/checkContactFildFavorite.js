@@ -1,16 +1,19 @@
-const {AppError} = require("../../utils");
+const { AppError, tryCatchWrapper, contactChangeFavoriteSchema } = require("../../utils");
 
 const checkContactFildFavorite = async (req, res, next) => {
-  try {
-    const { favorite } = req.body;
+  const { favorite } = req.body;
 
-    if (favorite === undefined) {
-      return next(new AppError(400, "missing field favorite"));
-    }
-    next();
-  } catch (error) {
-    next(error);
+  if (favorite === undefined) {
+    return next(new AppError(400, "missing field favorite"));
   }
+
+  const { error } = contactChangeFavoriteSchema(req.body);
+
+  if (error) return next(new AppError(400, error.details[0].message));
+
+  next();
 };
 
-module.exports = checkContactFildFavorite;
+module.exports = {
+  checkContactFildFavorite: tryCatchWrapper(checkContactFildFavorite),
+};
