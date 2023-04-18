@@ -20,7 +20,7 @@ const path = require('path');
 //           console.log('Email sent');
 //         })
 //         .catch(error => {
-//           console.error(error);
+//           console.error(error.message);
 //         });
 // }
 const nodemailer = require('nodemailer');
@@ -45,7 +45,7 @@ const sendEmail = async (email, verificationToken) => {
     from: process.env.BASE_EMAIL,
     to: email,
     subject: 'Welcome to Contacts API! Confirm your new email.',
-    text: `Hey there! You recently register the email address associated with your Contacts API account. To confirm your email, please click on the button or link below. ${verificationLink}`,
+    text: `Hey there! You recently register the email address associated with your Contacts API account. To confirm your email, please click on the button or link below. <a target="_blank" href='${verificationLink}'>Verify email</a> `,
   };
   
   transporter
