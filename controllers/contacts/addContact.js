@@ -2,7 +2,7 @@ const { Contact } = require("../../service");
 const { tryCatchWrapper } = require("../../utils");
 
 const addContactController = async (req, res) => {
-  const newContact = await Contact.create({...req.body, owner: req.user.id});
+  const newContact = await Contact.create({...req.body, owner: req.user._id});
   res.status(201).json(newContact);
 };
 
