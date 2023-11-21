@@ -14,7 +14,7 @@ const getAllController = async (req, res) => {
 
     const contacts = await Contact.find(filterRow).select("-__v").skip(skip).limit(paginationLimit);
   
-    res.status(200).json({ contacts });
+    res.status(200).json(contacts);
 };
 
 module.exports = {getAllController: tryCatchWrapper(getAllController)};

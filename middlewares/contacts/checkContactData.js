@@ -1,9 +1,9 @@
 const { AppError, contactAddSchema, tryCatchWrapper } = require("../../utils");
 
 const checkContactData = async (req, res, next) => {
-  const { name, email, phone } = req.body;
+  const { name, phone } = req.body;
 
-  if (!name || !email || !phone) {
+  if (!name || !phone) {
     return next(new AppError(400, "Missing required name field"));
   }
 

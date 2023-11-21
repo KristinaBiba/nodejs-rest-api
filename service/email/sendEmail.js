@@ -38,13 +38,13 @@ const config = {
 };
 const sendEmail = async (email, verificationToken) => {
 
-  const verificationLink = `${process.env.SERVER_URL}api/users/verify/${verificationToken}`;
+  const verificationLink = `${process.env.SERVER_URL}/api/users/verify/${verificationToken}`;
 
   const transporter = nodemailer.createTransport(config);
   const emailOptions = {
     from: process.env.BASE_EMAIL,
     to: email,
-    subject: 'Welcome to Contacts API! Confirm your new email.',
+    subject: 'Welcome to Contacts API! Confirm your email.',
     text: `Hey there! You recently register the email address associated with your Contacts API account. To confirm your email, please click on the button or link below. <a target="_blank" href='${verificationLink}'>Verify email</a> `,
   };
   

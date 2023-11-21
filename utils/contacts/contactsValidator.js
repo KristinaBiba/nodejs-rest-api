@@ -8,8 +8,7 @@ const contactAddSchema = (body) =>
       .email({
         minDomainSegments: 2,
         tlds: { allow: ["com", "net"] },
-      })
-      .required(),
+      }),
       favorite: Joi.boolean().default(false),
       owner: Joi.string(),
   }).validate(body);
