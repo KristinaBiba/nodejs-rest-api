@@ -1,6 +1,6 @@
-const {checkUserData} = require("./checkUserData");
+const {checkUserRegisterData, checkUserLoginData} = require("./checkUserData");
 const {checkUniqueEmail} = require("./checkUniqueEmail");
-const {checkUserLoginData} = require("./checkUserLoginData");
+const {checkCorrectUserLoginData} = require("./checkCorrectUserLoginData");
 const checkToken = require("./checkToken");
 const {checkUserSub} = require("./checkUserSub");
 const {checkUserId} = require("./checkUserId");
@@ -10,9 +10,10 @@ const {checkAccessRights} = require("./checkAccessRights");
 const {checkUserUpdateData} = require("./checkUserUpdateData");
 
 module.exports = {
-    checkUserData,
+    checkUserRegisterData,
     checkUniqueEmail,
     checkUserLoginData,
+    checkCorrectUserLoginData,
     checkToken,
     checkUserSub,
     checkUserId,

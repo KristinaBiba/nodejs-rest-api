@@ -14,7 +14,7 @@ const {
 } = require("../../controllers");
 
 const {
-  checkUserData,
+  checkUserRegisterData,
   checkUniqueEmail,
   checkUserLoginData,
   checkToken,
@@ -26,17 +26,18 @@ const {
   checkUserUpdateData,
 } = require("../../middlewares");
 
+
 router
   .route("/")
   .patch(checkToken, checkAccessRights, checkUserId, checkUserSub, changeUserSubController);
 
 router
   .route("/register")
-  .post(checkUserData, checkUniqueEmail, addUserController);
+  .post(checkUserRegisterData, checkUniqueEmail, addUserController);
 
 router
   .route("/login")
-  .post(checkUserData, checkUserLoginData, loginUserController);
+  .post(checkUserLoginData, checkUserLoginData, loginUserController);
 
 router.route("/logout").post(checkToken, logoutUserController);
 

@@ -5,7 +5,7 @@ const {
   checkUpdateContactData,
 } = require("./contacts");
 const {
-  checkUserData,
+  checkUserRegisterData,
   checkUniqueEmail,
   checkUserLoginData,
   checkToken,
@@ -15,6 +15,7 @@ const {
   checkUserVerify,
   checkAccessRights,
   checkUserUpdateData,
+  checkCorrectUserLoginData,
 } = require("./users");
 
 module.exports = {
@@ -22,9 +23,10 @@ module.exports = {
   checkContactData,
   checkContactFildFavorite,
   checkUpdateContactData,
-  checkUserData,
+  checkUserRegisterData,
   checkUniqueEmail,
   checkUserLoginData,
+  checkCorrectUserLoginData,
   checkToken,
   checkUserSub,
   checkUserId,

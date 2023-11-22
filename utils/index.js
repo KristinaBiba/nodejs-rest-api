@@ -1,5 +1,5 @@
 const { contactAddSchema, contactUpdateSchema, contactChangeFavoriteSchema } = require("./contacts");
-const { userRegisterValidator, userUpdateValidator } = require("./users");
+const { userRegisterValidator, userLoginValidator, userUpdateValidator } = require("./users");
 const tryCatchWrapper = require("./tryCatchWrapper");
 const saveUploadFile = require("./saveUploadFile");
 
@@ -11,6 +11,7 @@ module.exports = {
   contactChangeFavoriteSchema,
   AppError,
   userRegisterValidator,
+  userLoginValidator,
   userUpdateValidator,
   tryCatchWrapper,
   saveUploadFile,

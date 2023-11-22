@@ -2,7 +2,7 @@ const { User } = require("../../service");
 
 const { AppError, tryCatchWrapper } = require("../../utils");
 
-const checkUserLoginData = async (req, res, next) => {
+const checkCorrectUserLoginData = async (req, res, next) => {
   const { email, password } = req.body;
 
   const currentUser = await User.findOne({ email }).select("+password");
@@ -29,4 +29,4 @@ const checkUserLoginData = async (req, res, next) => {
   return;
 };
 
-module.exports = { checkUserLoginData: tryCatchWrapper(checkUserLoginData) };
+module.exports = { checkCorrectUserLoginData: tryCatchWrapper(checkCorrectUserLoginData) };
