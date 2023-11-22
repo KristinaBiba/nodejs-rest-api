@@ -7,6 +7,10 @@ const saltRounds = 10;
 
 const userSchema = new Schema(
   {
+    name: {
+      type: String,
+      required: [true, "Type user`s name"],
+    },
     password: {
       type: String,
       required: [true, "Set password for user"],

@@ -7,13 +7,14 @@ const { v4: uuidv4 } = require("uuid");
 const gravatar = require("gravatar");
 
 const addUserController = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
 
   const url = gravatar.url(email, { s: "200", r: "g", d: "identicon" });
 
   const verificationToken = uuidv4();
 
   const newUser = await User.create({
+    name,
     email,
     password,
     avatarURL: url,

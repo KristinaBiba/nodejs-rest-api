@@ -5,10 +5,10 @@ const {
 } = require("../../utils");
 
 const checkUserData = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
 
-  if (!email || !password) {
-    return next(new AppError(400, "missing required name field"));
+  if (!email || !password || !name) {
+    return next(new AppError(400, `Missing required field ${!email || !password || !name}`));
   }
 
   const { error } = userRegisterValidator(req.body);
