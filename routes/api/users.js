@@ -24,6 +24,7 @@ const {
   checkUserVerify,
   checkAccessRights,
   checkUserUpdateData,
+  checkCorrectUserLoginData,
 } = require("../../middlewares");
 
 
@@ -37,7 +38,7 @@ router
 
 router
   .route("/login")
-  .post(checkUserLoginData, checkUserLoginData, loginUserController);
+  .post(checkUserLoginData, checkCorrectUserLoginData, loginUserController);
 
 router.route("/logout").post(checkToken, logoutUserController);
 
