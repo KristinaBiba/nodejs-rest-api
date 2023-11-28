@@ -12,7 +12,6 @@ const checkToken = async (req, res, next) => {
 
   try {
     decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log(decoded);
   } catch (err) {
     return next(new AppError(401, 'Not authorized'));
   }
